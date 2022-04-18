@@ -6,6 +6,10 @@ import 'one.dart';
 void main() {
   // runApp(const MyApp());
   runApp(MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
     initialRoute: '/',
     routes: {
       '/': (context) => const QuestionOne(),
@@ -20,12 +24,8 @@ class QuestionOne extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return const Scaffold(
+      body: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -36,12 +36,8 @@ class QuestionTwo extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Question Two',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
-      home: const RadioRow(),
+    return const Scaffold(
+      body: RadioRow(),
     );
   }
 }

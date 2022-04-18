@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'main.dart';
+import 'nav.dart';
 
 enum RadioOptions { lafayette, jefferson }
 
@@ -91,13 +92,13 @@ class RadioRowState extends State<RadioRow> {
             shape: const RoundedRectangleBorder(),
             child: const Text('Next Question'),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const QuestionThree()),
+              Navigator.pop(
+                context
               );
             },
           ),
-        )
+        ),
+      bottomNavigationBar: myBottomNav(),
     );
   }
 
