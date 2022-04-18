@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+}
+
+h1{
+    text-align: center;
+    margin-top: 1em;
+}
+
+.orcs{
+    border: .25em solid blue;
+    margin: 1em;
+    padding: .5em;
+}

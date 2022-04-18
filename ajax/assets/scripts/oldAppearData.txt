@@ -1,0 +1,101 @@
+// document.getElementById("listMenu").innerHTML += `
+//   <div class='orcs' id = 'Excalibur'>
+//       <p>Orc ID = ${myArr.Excalibur.playerId}</p>
+//       <p>Orc Name = ${myArr.Excalibur.playerName}</p>
+//       <p>Orc Name = ${myArr.Excalibur.playerHealth}</p>
+//       <p>Orc Name = ${myArr.Excalibur.playerAttack}</p>
+//       <p>Orc Name = ${myArr.Excalibur.playerDefense}</p>
+//       <p>Orc Name = ${myArr.Excalibur.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Excalibur.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Ragnarok'>
+//                         <p>Orc ID = ${myArr.Ragnarok.playerId}</p>
+//                       <p>Orc Name = ${myArr.Ragnarok.playerName}</p>
+//                       <p>Orc Name = ${myArr.Ragnarok.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Ragnarok.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Ragnarok.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Ragnarok.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Ragnarok.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Gralbor'>
+//                         <p>Orc ID = ${myArr.Gralbor.playerId}</p>
+//                       <p>Orc Name = ${myArr.Gralbor.playerName}</p>
+//                       <p>Orc Name = ${myArr.Gralbor.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Gralbor.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Gralbor.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Gralbor.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Gralbor.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Groguk'>
+//                         <p>Orc ID = ${myArr.Groguk.playerId}</p>
+//                       <p>Orc Name = ${myArr.Groguk.playerName}</p>
+//                       <p>Orc Name = ${myArr.Groguk.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Groguk.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Groguk.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Groguk.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Groguk.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Fraar'>
+//                         <p>Orc ID = ${myArr.Fraar.playerId}</p>
+//                       <p>Orc Name = ${myArr.Fraar.playerName}</p>
+//                       <p>Orc Name = ${myArr.Fraar.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Fraar.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Fraar.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Fraar.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Fraar.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Jilbaar'>
+//                         <p>Orc ID = ${myArr.Jilbaar.playerId}</p>
+//                       <p>Orc Name = ${myArr.Jilbaar.playerName}</p>
+//                       <p>Orc Name = ${myArr.Jilbaar.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Jilbaar.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Jilbaar.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Jilbaar.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Jilbaar.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Kanaan'>
+//                         <p>Orc ID = ${myArr.Kanaan.playerId}</p>
+//                       <p>Orc Name = ${myArr.Kanaan.playerName}</p>
+//                       <p>Orc Name = ${myArr.Kanaan.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Kanaan.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Kanaan.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Kanaan.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Kanaan.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Zedorg'>
+//                         <p>Orc ID = ${myArr.Zedorg.playerId}</p>
+//                       <p>Orc Name = ${myArr.Zedorg.playerName}</p>
+//                       <p>Orc Name = ${myArr.Zedorg.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Zedorg.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Zedorg.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Zedorg.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Zedorg.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Hagraan'>
+//                         <p>Orc ID = ${myArr.Hagraan.playerId}</p>
+//                       <p>Orc Name = ${myArr.Hagraan.playerName}</p>
+//                       <p>Orc Name = ${myArr.Hagraan.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Hagraan.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Hagraan.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Hagraan.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Hagraan.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Hidalgo'>
+//                         <p>Orc ID = ${myArr.Hidalgo.playerId}</p>
+//                       <p>Orc Name = ${myArr.Hidalgo.playerName}</p>
+//                       <p>Orc Name = ${myArr.Hidalgo.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Hidalgo.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Hidalgo.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Hidalgo.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Hidalgo.playerImage}'> </p></div>
+//   </div>
+//   <div class='orcs' id = 'Kannan'>
+//                         <p>Orc ID = ${myArr.Dragul.playerId}</p>
+//                       <p>Orc Name = ${myArr.Dragul.playerName}</p>
+//                       <p>Orc Name = ${myArr.Dragul.playerHealth}</p>
+//                       <p>Orc Name = ${myArr.Dragul.playerAttack}</p>
+//                       <p>Orc Name = ${myArr.Dragul.playerDefense}</p>
+//                       <p>Orc Name = ${myArr.Dragul.playerToken}</p>
+//       <div><p>Orc Image = <img src='${myArr.Dragul.playerImage}'> </p></div>
+//   </div>
+//   `;
