@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'JsonClass.dart';
+
 class QuestionThree extends StatefulWidget {
   const QuestionThree({Key? key, required this.title}) : super(key: key);
 
@@ -29,7 +31,7 @@ class QuestionThreeState extends State<QuestionThree> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const QuestionThree(title: "Question Three")),
+              MaterialPageRoute(builder: (context) => const JsonClass(title: "JSON Data")),
             );
           },
         ),
