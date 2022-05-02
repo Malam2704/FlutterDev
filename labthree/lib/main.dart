@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:labthree/listView.dart';
+import 'package:labthree/nav.dart';
 
 void main() {
   runApp(const MyApp());
@@ -76,7 +77,9 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           },
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+
+      bottomNavigationBar: myBottomNav(),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

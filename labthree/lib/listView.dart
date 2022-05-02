@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'listContainers.dart';
+import 'nav.dart';
 
 List<String> myList = ["a",'b','c','d','e','f','g','h','i','j','k','l'];
 
@@ -37,7 +38,8 @@ class QuestionTwoState extends State<QuestionTwo> {
             );
           },
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      bottomNavigationBar: myBottomNav(),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'JsonClass.dart';
+import 'nav.dart';
 
 class QuestionThree extends StatefulWidget {
   const QuestionThree({Key? key, required this.title}) : super(key: key);
@@ -35,7 +36,8 @@ class QuestionThreeState extends State<QuestionThree> {
             );
           },
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      bottomNavigationBar: myBottomNav(),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
