@@ -4,6 +4,7 @@ import 'package:project_three/weatherView.dart';
 import 'main.dart';
 
 List<String> myList = ["a",'b','c','d','e','f','g','h','i','j','k','l'];
+List<String> cityNames = ['West Henrietta', 'Rochester', 'East Rochester', 'Penfield', 'Victor','Webster'];
 
 class WeatherList extends StatefulWidget {
   const WeatherList({Key? key, required this.title}) : super(key: key);
@@ -24,20 +25,6 @@ class WeatherListState extends State<WeatherList> {
       body: Center(
         child: myListView(),
       ),
-      floatingActionButton: FittedBox(
-        child: RawMaterialButton(
-          fillColor: Colors.purple,
-          padding: const EdgeInsets.fromLTRB(25, 25, 25, 25),
-          shape: const RoundedRectangleBorder(),
-          child: const Text('Next Question'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const WeatherView(title: "Question Three")),
-            );
-          },
-        ),
-      ),
     );
   }
 }
@@ -51,13 +38,26 @@ class myListView extends StatelessWidget{
     // return makeView();
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-      itemCount: myList.length,
+      itemCount: cityNames.length,
       itemBuilder: (context, index) {
         return Container(
           height: 50,
           color: Colors.blue[400],
           margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-          child: Center(child: Text(myList[index])),
+          child: Center(child: FittedBox(
+          child: RawMaterialButton(
+          fillColor: Colors.purple,
+            padding: const EdgeInsets.fromLTRB(25, 25, 25, 25),
+            shape: const RoundedRectangleBorder(),
+            child: Text(cityNames[index]),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyWeatherView(title: cityNames[index])),
+              );
+            },
+          ),
+        )),
         );
       },
     );

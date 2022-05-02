@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
+import 'package:weather/weather.dart';
 import 'dart:async';
 import 'dart:convert';
 
-class WeatherView extends StatefulWidget {
-  const WeatherView({Key? key, required this.title}) : super(key: key);
+class MyWeatherView extends StatefulWidget {
+  const MyWeatherView({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<WeatherView> createState() => JsonClassState();
+  State<MyWeatherView> createState() => WeatherViewState();
 }
 
-class JsonClassState extends State<WeatherView> {
-  late Future<List<Orc>> futureOrcs;
+class WeatherViewState extends State<MyWeatherView> {
+  late Future<List<Weather>> futureWeather;
 
   @override
   void initState() {
     super.initState();
-    futureOrcs = fetchOrcs();
+    futureWeather = fetchWeather(widget.title);
   }
   @override
   Widget build(BuildContext context) {
@@ -27,11 +28,11 @@ class JsonClassState extends State<WeatherView> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: FutureBuilder<List<Orc>>(
-          future: futureOrcs,
+        child: FutureBuilder<List<Weather>>(
+          future: futureWeather,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return OrcList(orcs: snapshot.data!, key: null,);
+              return WeatherList(weathers: snapshot.data!, key: null,);
             }
             else if (snapshot.hasError) {
               return Text("${snapshot.error}");
@@ -44,48 +45,43 @@ class JsonClassState extends State<WeatherView> {
   }
 }
 
-List<Orc> parseOrc(String responseBody) {
-  final parsed = jsonDecode(responseBody);
-  print('This is the parsePost method' + responseBody);
-  return parsed.map<Orc>((json) => Orc.fromJson(json)).toList();
+// List<Orc> parseOrc(String responseBody) {
+//   final parsed = jsonDecode(responseBody);
+//   print('This is the parsePost method' + responseBody);
+//   return parsed.map<Orc>((json) => Orc.fromJson(json)).toList();
+// }
+
+Future<List<Weather>> fetchWeather(String cityName) async {
+  String key = 'dcd5a01685803cf65da8d4d80ae4ec11';
+  WeatherFactory wf = WeatherFactory(key);
+  List<Weather> myWeather = [];
+
+  // for(int i=0; i < cityNames.length; i++){
+  //   print(i);
+    Weather w = await wf.currentWeatherByCityName(cityName);
+    myWeather.add(w);
+  // }
+
+  return myWeather;
 }
 
-Future<List<Orc>> fetchOrcs() async {
-  final response = await http.get(Uri.parse('https://people.rit.edu/ma3655/orcs.json'));
+class WeatherList extends StatelessWidget {
+  final List<Weather> weathers;
 
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return parseOrc(response.body);
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load posts');
-  }
-}
-
-class OrcList extends StatelessWidget {
-  final List<Orc> orcs;
-
-  OrcList ({Key? key, required this.orcs}) : super(key: key);
+  WeatherList ({Key? key, required this.weathers}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: const EdgeInsets.all(20),
-      itemCount: orcs.length,
+      itemCount: weathers.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
           padding: const EdgeInsets.all(28.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('User Id: ${orcs[index].id}'),
-              Text('Name: ${orcs[index].name}'),
-              Text('Health: ${orcs[index].health}'),
-              Text('Attack: ${orcs[index].attack}'),
-              Text('Defense: ${orcs[index].defense}'),
-              Text('Token: ${orcs[index].token}'),
+              Text('Weather Man: `${weathers[0]}`')
             ],
           ),
 
