@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          scaffoldBackgroundColor: const Color(0xFF163294), primarySwatch: Colors.blue
+          primarySwatch: Colors.indigo
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: const Color(163294),
+      backgroundColor: const Color(0xFF163294),
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -52,19 +52,31 @@ class _MyHomePageState extends State<MyHomePage> {
             margin: EdgeInsets.all(5),
             child: const Text("Rochester Weather App!", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
           ),
-          FittedBox(
-            child: RawMaterialButton(
-              fillColor: const Color(0xFF411F97),
-              padding: const EdgeInsets.fromLTRB(25, 25, 25, 25),
-              shape: const RoundedRectangleBorder(),
-              child: const Text("Open", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const WeatherList(title: "Local Cities")),
-                );
-              },
+          Container(
+            child: FittedBox(
+              child: RawMaterialButton(
+                fillColor: const Color(0xFF411F97),
+                padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20),)),
+                child: const Text("Open", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const WeatherList(title: "Local Cities")),
+                  );
+                },
+              ),
             ),
+              decoration: BoxDecoration(
+                color: Colors.teal,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black26,
+                    offset: Offset(10, 10), // Shadow position
+                  ),
+                ],
+              )
           )
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.

@@ -24,6 +24,7 @@ class WeatherViewState extends State<MyWeatherView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF163294),
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -32,7 +33,7 @@ class WeatherViewState extends State<MyWeatherView> {
           future: futureWeather,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return WeatherList(weathers: snapshot.data!, key: null,);
+              return WeatherList(weathers: snapshot.data!, key: null, title: widget.title);
             }
             else if (snapshot.hasError) {
               return Text("${snapshot.error}");
@@ -45,30 +46,22 @@ class WeatherViewState extends State<MyWeatherView> {
   }
 }
 
-// List<Orc> parseOrc(String responseBody) {
-//   final parsed = jsonDecode(responseBody);
-//   print('This is the parsePost method' + responseBody);
-//   return parsed.map<Orc>((json) => Orc.fromJson(json)).toList();
-// }
-
 Future<List<Weather>> fetchWeather(String cityName) async {
   String key = 'dcd5a01685803cf65da8d4d80ae4ec11';
   WeatherFactory wf = WeatherFactory(key);
   List<Weather> myWeather = [];
 
-  // for(int i=0; i < cityNames.length; i++){
-  //   print(i);
-    Weather w = await wf.currentWeatherByCityName(cityName);
-    myWeather.add(w);
-  // }
+  Weather w = await wf.currentWeatherByCityName(cityName);
+  myWeather.add(w);
 
   return myWeather;
 }
 
 class WeatherList extends StatelessWidget {
   final List<Weather> weathers;
+  final String title;
 
-  WeatherList ({Key? key, required this.weathers}) : super(key: key);
+  WeatherList ({Key? key, required this.weathers, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +70,37 @@ class WeatherList extends StatelessWidget {
       itemCount: weathers.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
-          padding: const EdgeInsets.all(28.0),
+          padding: const EdgeInsets.all(0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Weather Man: `${weathers[0]}`')
+              Container(
+                margin: const EdgeInsets.all(0),
+                alignment: Alignment.center,
+                child: Image.network('http://openweathermap.org/img/w/${weathers[0].weatherIcon}.png', width: 300, fit: BoxFit.cover, ),
+              ),
+              Container( //apply margin and padding using Container Widget.
+                margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
+                alignment: Alignment.center,
+                child: Text(weathers[0].weatherDescription.toUpperCase(), style: const TextStyle(fontSize: 40, color: Colors.white,), textAlign: TextAlign.center,),
+              ),
+              Container( //apply margin and padding using Container Widget.
+                margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
+                alignment: Alignment.center,
+                child: Text('${weathers[0].temperature.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].temperature.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 65, color: Colors.white,), textAlign: TextAlign.center,),
+              ),
+              Container( //apply margin and padding using Container Widget.
+                margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
+                alignment: Alignment.center,
+                child: Text('$title, NY', style: const TextStyle(fontSize: 40, color: Colors.white,), textAlign: TextAlign.center,),
+              ),
+              Text('Max Temp: ${weathers[0].tempMax.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempMax.celsius.toStringAsFixed(0)}', style: const TextStyle(fontSize: 20, color: Colors.white,)),
+              Text('Mix Temp: ${weathers[0].tempMin.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempMin.celsius.toStringAsFixed(0)}', style: const TextStyle(fontSize: 20, color: Colors.white,)),
+              Text('Feels Like Temp: ${weathers[0].tempFeelsLike.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempFeelsLike.celsius.toStringAsFixed(0)}', style: const TextStyle(fontSize: 20, color: Colors.white,)),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                alignment: Alignment.center,
+                child: Text('${weathers[0].date}', style: const TextStyle(fontSize: 20, color: Colors.white,), textAlign: TextAlign.center,),)
             ],
           ),
 
