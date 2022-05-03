@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:http/http.dart' as http;
 import 'package:weather/weather.dart';
@@ -79,28 +80,65 @@ class WeatherList extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Image.network('http://openweathermap.org/img/w/${weathers[0].weatherIcon}.png', width: 300, fit: BoxFit.cover, ),
               ),
-              Container( //apply margin and padding using Container Widget.
+              Container(
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
                 alignment: Alignment.center,
                 child: Text(weathers[0].weatherDescription.toUpperCase(), style: const TextStyle(fontSize: 40, color: Colors.white,), textAlign: TextAlign.center,),
               ),
-              Container( //apply margin and padding using Container Widget.
+              Container(
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
                 alignment: Alignment.center,
                 child: Text('${weathers[0].temperature.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].temperature.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 65, color: Colors.white,), textAlign: TextAlign.center,),
               ),
-              Container( //apply margin and padding using Container Widget.
+              Container(
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
                 alignment: Alignment.center,
                 child: Text('$title, NY', style: const TextStyle(fontSize: 40, color: Colors.white,), textAlign: TextAlign.center,),
               ),
-              Text('Max Temp: ${weathers[0].tempMax.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempMax.celsius.toStringAsFixed(0)}', style: const TextStyle(fontSize: 20, color: Colors.white,)),
-              Text('Mix Temp: ${weathers[0].tempMin.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempMin.celsius.toStringAsFixed(0)}', style: const TextStyle(fontSize: 20, color: Colors.white,)),
-              Text('Feels Like Temp: ${weathers[0].tempFeelsLike.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempFeelsLike.celsius.toStringAsFixed(0)}', style: const TextStyle(fontSize: 20, color: Colors.white,)),
+
+
               Container(
-                margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                alignment: Alignment.centerLeft,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Max Temp: ${weathers[0].tempMax.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempMax.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white,)),
+                    Text('Mix Temp: ${weathers[0].tempMin.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempMin.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white,)),
+                    Text('Feels Like Temp: ${weathers[0].tempFeelsLike.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempFeelsLike.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white)),
+                  ],
+                ),
+              ),
+              Container(
+                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                  alignment: Alignment.centerRight,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text('Sunrise: ${weathers[0].sunrise}', style: const TextStyle(fontSize: 20, color: Colors.orange,)),
+                      Text('Sunset: ${weathers[0].sunset}', style: const TextStyle(fontSize: 20, color: Colors.yellow,)),
+                  ],
+                ),
+              ),
+
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 25, 0, 0),
                 alignment: Alignment.center,
-                child: Text('${weathers[0].date}', style: const TextStyle(fontSize: 20, color: Colors.white,), textAlign: TextAlign.center,),)
+                child: Text('${weathers[0].date}', style: const TextStyle(fontSize: 20, color: Colors.white,), textAlign: TextAlign.center,),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 25, 0, 25),
+                alignment: Alignment.center,
+                child: RawMaterialButton(
+                  fillColor: const Color(0xFF411F97),
+                  padding: const EdgeInsets.fromLTRB(25, 25, 25, 25),
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20),)),
+                  child: const Text("Go Back", style: TextStyle(fontSize: 30, color: Colors.white,)), onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+
             ],
           ),
 
@@ -109,3 +147,4 @@ class WeatherList extends StatelessWidget {
     );
   }
 }
+
