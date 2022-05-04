@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
 import 'package:weather/weather.dart';
 import 'dart:async';
-import 'dart:convert';
 
 class MyWeatherView extends StatefulWidget {
   const MyWeatherView({Key? key, required this.title}) : super(key: key);
@@ -39,7 +37,7 @@ class WeatherViewState extends State<MyWeatherView> {
             else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           },
         ),
       ),
@@ -55,6 +53,12 @@ Future<List<Weather>> fetchWeather(String cityName) async {
   Weather w = await wf.currentWeatherByCityName(cityName);
   myWeather.add(w);
 
+  // Print here is to show the Request Output,
+  // sometimes cities have null values for things such as weather
+  if (kDebugMode) {
+    print(w);
+  }
+
   return myWeather;
 }
 
@@ -62,7 +66,7 @@ class WeatherList extends StatelessWidget {
   final List<Weather> weathers;
   final String title;
 
-  WeatherList ({Key? key, required this.weathers, required this.title}) : super(key: key);
+  const WeatherList ({Key? key, required this.weathers, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -83,12 +87,12 @@ class WeatherList extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
                 alignment: Alignment.center,
-                child: Text(weathers[0].weatherDescription.toUpperCase(), style: const TextStyle(fontSize: 40, color: Colors.white,), textAlign: TextAlign.center,),
+                child: Text(weathers[0].weatherDescription!.toUpperCase(), style: const TextStyle(fontSize: 40, color: Colors.white,), textAlign: TextAlign.center,),
               ),
               Container(
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
                 alignment: Alignment.center,
-                child: Text('${weathers[0].temperature.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].temperature.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 65, color: Colors.white,), textAlign: TextAlign.center,),
+                child: Text('${weathers[0].temperature?.fahrenheit?.toStringAsFixed(0)}°F / ${weathers[0].temperature?.celsius?.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 65, color: Colors.white,), textAlign: TextAlign.center,),
               ),
               Container(
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
@@ -103,9 +107,9 @@ class WeatherList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Max Temp: ${weathers[0].tempMax.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempMax.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white,)),
-                    Text('Mix Temp: ${weathers[0].tempMin.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempMin.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white,)),
-                    Text('Feels Like Temp: ${weathers[0].tempFeelsLike.fahrenheit.toStringAsFixed(0)}°F / ${weathers[0].tempFeelsLike.celsius.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white)),
+                    Text('Max Temp: ${weathers[0].tempMax?.fahrenheit?.toStringAsFixed(0)}°F / ${weathers[0].tempMax?.celsius?.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white,)),
+                    Text('Mix Temp: ${weathers[0].tempMin?.fahrenheit?.toStringAsFixed(0)}°F / ${weathers[0].tempMin?.celsius?.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white,)),
+                    Text('Feels Like Temp: ${weathers[0].tempFeelsLike?.fahrenheit?.toStringAsFixed(0)}°F / ${weathers[0].tempFeelsLike?.celsius?.toStringAsFixed(0)}°C', style: const TextStyle(fontSize: 20, color: Colors.white)),
                   ],
                 ),
               ),

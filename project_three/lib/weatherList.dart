@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_three/weatherView.dart';
 
-import 'main.dart';
-
 List<String> myList = ["a",'b','c','d','e','f','g','h','i','j','k','l'];
 List<String> cityNames = ['Monroe', 'Rochester', 'East Rochester', 'Fairport', 'Victor','Webster', 'Canandaigua', 'Honeoye Falls', 'Brockport', 'Spencerport', 'Buffalo', 'Niagara Falls'];
 
