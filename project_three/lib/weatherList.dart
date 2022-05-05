@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_three/weatherView.dart';
 
-List<String> myList = ["a",'b','c','d','e','f','g','h','i','j','k','l'];
+//All cities being used.
 List<String> cityNames = ['Monroe', 'Rochester', 'East Rochester', 'Fairport', 'Victor','Webster', 'Canandaigua', 'Honeoye Falls', 'Brockport', 'Spencerport', 'Buffalo', 'Niagara Falls'];
 
 class WeatherList extends StatefulWidget {
@@ -13,6 +13,7 @@ class WeatherList extends StatefulWidget {
   State<WeatherList> createState() => WeatherListState();
 }
 
+//stateless widget for the entire page
 class WeatherListState extends State<WeatherList> {
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class WeatherListState extends State<WeatherList> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: const Center(
         child: myListView(),
       ),
       backgroundColor: const Color(0xFF411F97),
@@ -28,13 +29,14 @@ class WeatherListState extends State<WeatherList> {
   }
 }
 
+//the actual list, or buttons made from the cityNames list above
 class myListView extends StatelessWidget{
-  myListView({Key? key}) : super(key: key);
-  int shade = 900;
+  const myListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // return makeView();
+    //returns a button for each value in city name list, with a set padding, width, and margin
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(5, 25, 5, 25),
       itemCount: cityNames.length,
@@ -43,6 +45,9 @@ class myListView extends StatelessWidget{
             child: Container(
               width: 320,
               margin: const EdgeInsets.fromLTRB(5, 10, 5, 10),
+              //Actual button logic of the city buttons, with color, padding, text being whichever index of the list
+              // The current city name gets passed as a parameter because it will be used to send
+              // the openweathermap api request, with it's name.
               child: RawMaterialButton(
                 fillColor: const Color(0xFF163294),
                 padding: const EdgeInsets.fromLTRB(25, 25, 25, 25),

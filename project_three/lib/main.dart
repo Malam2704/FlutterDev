@@ -30,6 +30,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+//Essentially a scaffold for the front page, goign form img, to text, to button
 class _MyHomePageState extends State<MyHomePage> {
 
   @override
@@ -56,9 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
             child: FittedBox(
               child: RawMaterialButton(
                 fillColor: const Color(0xFF411F97),
+                //gives it that space
                 padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20),)),
                 child: const Text("Open", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
+                //Sends user to weather list view
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -67,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
+              //Box shadow is essentially made here for the botton
               decoration: BoxDecoration(
                 color: Colors.teal,
                 borderRadius: BorderRadius.circular(20),
