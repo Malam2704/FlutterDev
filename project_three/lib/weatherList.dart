@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:project_three/weatherView.dart';
 
 //All cities being used.
-List<String> cityNames = ['Monroe', 'Rochester', 'East Rochester', 'Fairport', 'Victor','Webster', 'Canandaigua', 'Honeoye Falls', 'Brockport', 'Spencerport', 'Buffalo', 'Niagara Falls'];
+// List<String> cityNames = ['Monroe', 'Rochester', 'East Rochester', 'Fairport', 'Victor','Webster', 'Canandaigua', 'Honeoye Falls', 'Brockport', 'Spencerport', 'Buffalo', 'Niagara Falls'];
 
 class WeatherList extends StatefulWidget {
-  const WeatherList({Key? key, required this.title}) : super(key: key);
+  const WeatherList({Key? key, required this.title, required this.cityNames}) : super(key: key);
 
   final String title;
+  final List<String> cityNames;
 
   @override
   State<WeatherList> createState() => WeatherListState();
@@ -21,8 +22,8 @@ class WeatherListState extends State<WeatherList> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: const Center(
-        child: myListView(),
+      body: Center(
+        child: myListView(cityNames: widget.cityNames),
       ),
       backgroundColor: const Color(0xFF411F97),
     );
@@ -31,7 +32,8 @@ class WeatherListState extends State<WeatherList> {
 
 //the actual list, or buttons made from the cityNames list above
 class myListView extends StatelessWidget{
-  const myListView({Key? key}) : super(key: key);
+  const myListView({Key? key, required this.cityNames}) : super(key: key);
+  final List<String> cityNames;
 
   @override
   Widget build(BuildContext context) {

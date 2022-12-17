@@ -30,8 +30,11 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-//Essentially a scaffold for the front page, goign form img, to text, to button
+//Essentially a scaffold for the front page, going form img, to text, to button
 class _MyHomePageState extends State<MyHomePage> {
+  //All cities being used.
+  List<String> rocNames = ['Monroe', 'Rochester', 'East Rochester', 'Fairport', 'Victor','Webster', 'Canandaigua', 'Honeoye Falls', 'Brockport', 'Spencerport', 'Buffalo', 'Niagara Falls'];
+  List<String> nycNames = ['New York','Elmhurst','Jackson Heights','Rego Park', 'Forest Hills'];
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const WeatherList(title: "Local Cities")),
+                          MaterialPageRoute(builder: (context) => WeatherList(title: "New York Metro Area", cityNames: nycNames,)),
                         );
                       },
                     ),
@@ -98,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const WeatherList(title: "Local Cities")),
+                          MaterialPageRoute(builder: (context) => WeatherList(title: "Rochester Metro Area", cityNames: rocNames,)),
                         );
                       },
                     ),
