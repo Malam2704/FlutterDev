@@ -53,63 +53,69 @@ class _MyHomePageState extends State<MyHomePage> {
             margin: EdgeInsets.all(5),
             child: const Text("Rochester Weather App!", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
           ),
-          Container(
-            child: FittedBox(
-              child: RawMaterialButton(
-                fillColor: const Color(0xFF411F97),
-                //gives it that space
-                padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20),)),
-                child: const Text("Rochester", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
-                //Sends user to weather list view
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const WeatherList(title: "Local Cities")),
-                  );
-                },
-              ),
-            ),
-              //Box shadow is essentially made here for the botton
-              decoration: BoxDecoration(
-                color: Colors.teal,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black26,
-                    offset: Offset(10, 10), // Shadow position
+          Column(
+            children: <Widget>[
+              Container(
+                  margin: EdgeInsets.all(10),
+                  child: FittedBox(
+                    child: RawMaterialButton(
+                      fillColor: const Color(0xFF411F97),
+                      //gives it that space
+                      padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20),)),
+                      child: const Text("NYC Area", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
+                      //Sends user to weather list view
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const WeatherList(title: "Local Cities")),
+                        );
+                      },
+                    ),
                   ),
-                ],
-              )
-          ),
-          Container(
-              child: FittedBox(
-                child: RawMaterialButton(
-                  fillColor: const Color(0xFF411F97),
-                  //gives it that space
-                  padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20),)),
-                  child: const Text("NYC", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
-                  //Sends user to weather list view
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const WeatherList(title: "Local Cities")),
-                    );
-                  },
-                ),
+                  //Box shadow is essentially made here for the botton
+                  decoration: BoxDecoration(
+                    color: Colors.teal,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(10, 10), // Shadow position
+                      ),
+                    ],
+                  )
               ),
-              //Box shadow is essentially made here for the botton
-              decoration: BoxDecoration(
-                color: Colors.teal,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black26,
-                    offset: Offset(10, 10), // Shadow position
+              Container(
+                  margin: EdgeInsets.all(10),
+                  child: FittedBox(
+                    child: RawMaterialButton(
+                      fillColor: const Color(0xFF411F97),
+                      //gives it that space
+                      padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20),)),
+                      child: const Text("Rochester", style: TextStyle(fontSize: 50, color: Colors.white,), textAlign: TextAlign.center,),
+                      //Sends user to weather list view
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const WeatherList(title: "Local Cities")),
+                        );
+                      },
+                    ),
                   ),
-                ],
-              )
+                  //Box shadow is essentially made here for the botton
+                  decoration: BoxDecoration(
+                    color: Colors.teal,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(10, 10), // Shadow position
+                      ),
+                    ],
+                  )
+              ),
+            ],
           )
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
