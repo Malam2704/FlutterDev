@@ -108,7 +108,7 @@ class WeatherList extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 25),
                 alignment: Alignment.center,
-                child: Text('$title, NY', style: const TextStyle(fontSize: 40, color: Colors.white,), textAlign: TextAlign.center,),
+                child: Text('$title', style: const TextStyle(fontSize: 40, color: Colors.white,), textAlign: TextAlign.center,),
               ),
 
               //Text contianing min, max, and feel like temp
